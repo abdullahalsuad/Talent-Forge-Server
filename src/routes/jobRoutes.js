@@ -4,9 +4,9 @@ import * as jobController from "../controllers/jobController.js";
 const router = express.Router();
 
 // Route to get all jobs
-router.get("/", jobController.getAllJobs);
+router.get("/jobs", jobController.getAllJobs);
 
 // Route to create new jobs
-router.post("/", jobController.createJob);
+router.post("/jobs", jobController.createJob);
 
 export default router;

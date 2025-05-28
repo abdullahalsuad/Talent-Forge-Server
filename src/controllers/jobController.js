@@ -23,6 +23,7 @@ export const getJobByID = async (req, res) => {
 
 // Create new job
 export const createJob = async (req, res) => {
+  const job = new JobModel(req.body);
   try {
     const savedJob = await job.save();
     res.status(201).json(savedJob);

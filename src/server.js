@@ -17,7 +17,7 @@ app.use(express.json());
 connectDB();
 
 // Routes
-app.use("/api/v1/jobs", jobRoutes);
+app.use("/api/v1", jobRoutes);
 
 // Basic route
 app.get("/", (req, res) => {

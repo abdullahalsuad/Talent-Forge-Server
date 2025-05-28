@@ -2,8 +2,35 @@ import mongoose from "mongoose";
 
 const jobSchema = new mongoose.Schema(
   {
+    // Display name of the user
+    displayName: {
+      type: String,
+      trim: true,
+    },
+
+    // Email address (should be unique)
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
+
+    // Company  Photo URL
+    companyPhotoURL: {
+      type: String,
+      default: null,
+    },
+
     // Job Position Title
     positionTitle: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    // Apply Method
+    applyMethod: {
       type: String,
       required: true,
       trim: true,
@@ -23,15 +50,13 @@ const jobSchema = new mongoose.Schema(
     },
 
     // Salary Range (in USD or local currency)
-    salaryRange: {
-      min: {
-        type: Number,
-        default: null,
-      },
-      max: {
-        type: Number,
-        default: null,
-      },
+    salaryMin: {
+      type: Number,
+      default: null,
+    },
+    salaryMax: {
+      type: Number,
+      default: null,
     },
 
     // Job Description (Responsibilities, Requirements, etc.)
@@ -65,10 +90,11 @@ const jobSchema = new mongoose.Schema(
       default: "On-Site",
     },
 
-    // Benefits Offered (Health Insurance, PTO, etc.)
-    benefits: {
-      type: [String],
-      default: [],
+    // Experience Level (Entry Level, Mid Level, Senior Level,)
+    experienceLevel: {
+      type: String,
+      enum: ["Entry Level", "Mid Level", "Senior Level"],
+      default: "Entry Level",
     },
   },
   {
