@@ -19,7 +19,7 @@ const jobSchema = new mongoose.Schema(
     // Company  Photo URL
     companyPhotoURL: {
       type: String,
-      default: null,
+      // default: null,
     },
 
     // Job Position Title
@@ -54,6 +54,7 @@ const jobSchema = new mongoose.Schema(
       type: Number,
       default: null,
     },
+
     salaryMax: {
       type: Number,
       default: null,
