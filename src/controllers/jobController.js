@@ -44,7 +44,6 @@ export const createJob = async (req, res) => {
   try {
     const savedJob = await job.save();
     res.status(201).json(savedJob);
-    console.log(savedJob);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
