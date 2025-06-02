@@ -16,4 +16,7 @@ router.get("/user/:email", verifyFirebaseToken, jobController.getJobsByEmail);
 // Route to create new job
 router.post("/jobs", jobController.createJob);
 
+// Route to delete a job
+router.delete("/jobs/:id", verifyFirebaseToken, jobController.deleteAJob);
+
 export default router;

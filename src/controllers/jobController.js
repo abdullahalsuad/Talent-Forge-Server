@@ -10,12 +10,12 @@ export const getAllJobs = async (req, res) => {
   }
 };
 
-// Get Jobs by email
+// Get Jobs by email from the database
 export const getJobsByEmail = async (req, res) => {
   try {
-    const { email } = req.params;
-    const jobs = await JobModel.find({ email });
+    const { email: creatorEmail } = req.params;
 
+    const jobs = await JobModel.find({ creatorEmail });
     if (!jobs || jobs.length === 0) {
       return res.status(404).json({ message: "No jobs found for this email" });
     }
@@ -39,12 +39,22 @@ export const getJobByID = async (req, res) => {
 
 // Create new job
 export const createJob = async (req, res) => {
-  const job = new JobModel(req.body);
-  // console.log(job);
   try {
+    const job = new JobModel(req.body);
     const savedJob = await job.save();
     res.status(201).json(savedJob);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+};
+
+// Delete job
+export const deleteAJob = async (req, res) => {
+  try {
+    const job = await JobModel.findByIdAndDelete(req.params.id);
+    if (!job) return res.status(404).json({ message: "Job not found" });
+    res.status(200).json(job);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

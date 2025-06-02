@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import connectDB from "./config/db.js";
 import jobRoutes from "./routes/jobRoutes.js";
+import applicantRoutes from "./routes/applicantRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -16,8 +17,11 @@ app.use(express.json());
 // Connect to DB
 connectDB();
 
-// Routes
+// Routes for jobs
 app.use("/api/v1", jobRoutes);
+
+//Route for applicants
+app.use("/api/v1", applicantRoutes);
 
 // Basic route
 app.get("/", (req, res) => {

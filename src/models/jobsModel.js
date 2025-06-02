@@ -9,7 +9,7 @@ const jobSchema = new mongoose.Schema(
     },
 
     // Email address (should be unique)
-    email: {
+    creatorEmail: {
       type: String,
       required: true,
       trim: true,
