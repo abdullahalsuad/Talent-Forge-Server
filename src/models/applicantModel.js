@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const applicantSchema = new mongoose.Schema(
   {
@@ -51,13 +52,25 @@ const applicantSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // Job Creator email
+    // About job
     creatorEmail: {
       type: String,
       trim: true,
     },
+
     jobId: {
       type: String,
+    },
+    jobTitle: {
+      type: String,
+      trim: true,
+    },
+    companyName: {
+      type: String,
+      trim: true,
+    },
+    applicationDeadline: {
+      type: Date,
     },
   },
   {
