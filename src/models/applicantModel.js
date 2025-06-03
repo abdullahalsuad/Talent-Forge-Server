@@ -53,22 +53,30 @@ const applicantSchema = new mongoose.Schema(
     },
 
     // About job
+    // creator email
     creatorEmail: {
       type: String,
       trim: true,
     },
 
+    // job id
     jobId: {
       type: String,
     },
-    jobTitle: {
+
+    // job title
+    positionTitle: {
       type: String,
       trim: true,
     },
+
+    // company name
     companyName: {
       type: String,
       trim: true,
     },
+
+    // application deadline
     applicationDeadline: {
       type: Date,
     },

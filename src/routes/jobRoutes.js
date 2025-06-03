@@ -13,6 +13,13 @@ router.get("/jobs/:id", jobController.getJobByID);
 // Route to get all jobs by email
 router.get("/user/:email", verifyFirebaseToken, jobController.getJobsByEmail);
 
+// Route to update Applicants
+router.patch(
+  "/applicants/:jobId",
+  verifyFirebaseToken,
+  jobController.updateApplicants
+);
+
 // Route to create new job
 router.post("/jobs", jobController.createJob);
 

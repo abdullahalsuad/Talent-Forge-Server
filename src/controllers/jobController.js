@@ -37,6 +37,23 @@ export const getJobByID = async (req, res) => {
   }
 };
 
+// Update the applicants
+export const updateApplicants = async (req, res) => {
+  try {
+    const job = await JobModel.findByIdAndUpdate(
+      req.params.jobId,
+      { $inc: { totalApplicants: 1 } },
+      { new: true }
+    );
+
+    if (!job) return res.status(404).json({ message: "Job not found" });
+
+    res.status(200).json(job);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // Create new job
 export const createJob = async (req, res) => {
   try {
